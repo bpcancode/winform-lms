@@ -5,7 +5,7 @@ namespace lms.Admin.Controls
 {
     public partial class AddBook : UserControl
     {
-        private readonly Library _library = new();
+        private readonly Library<Book> _library = new();
 
         public AddBook()
         {

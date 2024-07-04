@@ -14,7 +14,7 @@ namespace lms.Admin.Controls.Users
     public partial class AllUsers : UserControl
     {
 
-        Library library = new();
+        Library<Models.User<Book>> library = new();
         public AllUsers()
         {
             InitializeComponent();
@@ -27,8 +27,8 @@ namespace lms.Admin.Controls.Users
 
         public void UpdateDataGrid()
         {
-            dataGridView1.DataSource = typeof(List<Models.User>);
-            dataGridView1.DataSource = Library.AllUsers;
+            dataGridView1.DataSource = typeof(List<Models.User<Book>>);
+            dataGridView1.DataSource = Library<Models.User<Book>>.AllUsers;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

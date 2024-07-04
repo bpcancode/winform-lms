@@ -13,7 +13,7 @@ namespace lms.Admin.Controls
 {
     public partial class RemoveBook : UserControl
     {
-        private Library _library = new();
+        private Library<Book> _library = new();
         public RemoveBook()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace lms.Admin.Controls
         public void UpdateDataGrid()
         {
             dataGridView1.DataSource = typeof(List<Book>);
-            dataGridView1.DataSource = Library.AllBooks;
+            dataGridView1.DataSource = Library<Book>.AllBooks;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

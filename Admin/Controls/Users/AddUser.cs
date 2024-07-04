@@ -13,7 +13,7 @@ namespace lms.Admin.Controls.Users
 {
     public partial class AddUser : UserControl
     {
-        Library library = new();
+        Library<Book> library = new();
         public AddUser()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace lms.Admin.Controls.Users
                 return;
             }
             
-            library.AddUser(new Models.User { UserId = userId, UserName = userName});
+            library.AddUser(new Models.User<Book> { UserId = userId, UserName = userName});
         }
     }
 }

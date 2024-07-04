@@ -13,7 +13,7 @@ namespace lms.Admin.Controls.Users
 {
     public partial class RemoveUser : UserControl
     {
-        Library library = new();
+        Library<CD> library = new();
         public RemoveUser()
         {
             InitializeComponent();
@@ -26,8 +26,8 @@ namespace lms.Admin.Controls.Users
 
         public void UpdateDataGrid()
         {
-            dataGridView1.DataSource = typeof(List<Models.User>);
-            dataGridView1.DataSource = Library.AllUsers;
+            dataGridView1.DataSource = typeof(List<Models.User<CD>>);
+            dataGridView1.DataSource = Library<CD>.AllUsers;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace lms.Admin.Controls.Users
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Models.User usr = (Models.User)dataGridView1.CurrentRow.DataBoundItem;
+            Models.User<CD> usr = (Models.User<CD>)dataGridView1.CurrentRow.DataBoundItem;
             if (usr is null) return;
             library.RemoveUser(usr);
             UpdateDataGrid();

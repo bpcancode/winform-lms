@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lms.Models;
 
-public class Book
+public class Book : Item
 {
     public string Title { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;

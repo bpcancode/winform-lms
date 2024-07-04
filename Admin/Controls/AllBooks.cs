@@ -14,7 +14,7 @@ namespace lms.Admin.Controls
     public partial class AllBooks : UserControl
     {
 
-        private Library library = new();
+        private Library<Book> library = new();
         public AllBooks()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace lms.Admin.Controls
 
         private void AllBooks_Load(object sender, EventArgs e)
         {
-            var books = Library.AllBooks;
+            var books = Library<Book>.AllBooks;
             dataGridView1.DataSource = books;
         }
 
@@ -32,7 +32,7 @@ namespace lms.Admin.Controls
             var searchKey = textBox1.Text;
             if (string.IsNullOrEmpty(searchKey))
             {
-                var allbooks = Library.AllBooks;
+                var allbooks = Library<Book>.AllBooks;
                 dataGridView1.DataSource = allbooks;
                 return;
             }
@@ -51,7 +51,7 @@ namespace lms.Admin.Controls
         public void updateDataGrid()
         {
             dataGridView1.DataSource = typeof(List<Book>);
-            dataGridView1.DataSource = Library.AllBooks;
+            dataGridView1.DataSource = Library<Book>.AllBooks;
         }
     }
 }

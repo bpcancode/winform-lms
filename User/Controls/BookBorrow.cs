@@ -13,8 +13,8 @@ namespace lms.User.Controls
 {
     public partial class BookBorrow : UserControl
     {
-        private Library library = new();
-        private Models.User user = new();
+        private Library<CD> library = new();
+        private Models.User<CD> user = new();
         public BookBorrow()
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace lms.User.Controls
         public void UpdateDataGrid()
         {
             dataGridView1.DataSource = typeof(List<Book>);
-            dataGridView1.DataSource = Library.AllBooks;
+            dataGridView1.DataSource = Library<CD>.AllBooks;
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)

@@ -13,8 +13,8 @@ namespace lms.User.Controls
 {
     public partial class ReturnBook : UserControl
     {
-        private Library library = new();
-        private Models.User user = new();
+        private Library<CD> library = new();
+        private Models.User<CD> user = new();
         public ReturnBook()
         {
             InitializeComponent();
@@ -28,13 +28,13 @@ namespace lms.User.Controls
 
         private void ReturnBook_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = Library.AllBooks;
+            dataGridView1.DataSource = Library<CD>.AllBooks;
         }
 
         public void UpdateDataGrid()
         {
             dataGridView1.DataSource = typeof(List<Book>);
-            dataGridView1.DataSource = Library.AllBooks;
+            dataGridView1.DataSource = Library<CD>.AllBooks;
 
         }
 

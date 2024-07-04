@@ -3,10 +3,11 @@ using System.Text.Json;
 
 namespace lms.Models;
 
-public  class Library
+public  class Library<T>
 {
+    public static List<T> items = new List<T>();
     public static List<Book> AllBooks { get; set; } =[];
-    public static List<User> AllUsers { get; set; } = [];
+    public static List<User<T>> AllUsers { get; set; } = [];
     public Library()
     {
 
@@ -32,7 +33,7 @@ public  class Library
     {
         foreach (string line in File.ReadLines(GetFilePath("users.txt")))
         {
-            var book = JsonSerializer.Deserialize<User>(line);
+            var book = JsonSerializer.Deserialize<User<T>>(line);
             AllUsers.Add(book);
         }
     }
@@ -63,21 +64,33 @@ public  class Library
     }
 
 
-    public void AddUser(Models.User usr)
+    public void AddUser(Models.User<T> usr)
     {
         AllUsers.Add(usr);
         MessageBox.Show("User Added Successfully");
     }
 
-    public void RemoveUser(Models.User usr)
+    public void RemoveUser(Models.User<T> usr)
     {
         AllUsers.Remove(usr);
         MessageBox.Show("User Remove Successfully");
     }
 
-    public List<User> AllUser()
+    public List<User<T>> AllUser()
     {
         return AllUsers;
+    }
+
+    public static void borrowItem(T item)
+    {
+        User<T> user = new User<T>();
+        user.borrowedItems.Add(item);
+    }
+
+    public static void returnItem(T item)
+    {
+        User<T> user = new User<T>();
+        user.borrowedItems.Remove(item);
     }
 
     public static void borrowBook(Book book)
